@@ -48,20 +48,3 @@ class RemoteServerDeployer:
         self.client.exec_command(f"mkdir -p {directory_path}")
 
 # 示例用法
-if __name__ == "__main__":
-    # 定义服务器列表
-    servers = [
-        {"hostname": "server1_ip", "port": 22, "username": "username"},
-        {"hostname": "server2_ip", "port": 22, "username": "username"}
-    ]
-
-    for server_config in servers:
-        deployer = RemoteServerDeployer(
-            server_config["hostname"],
-            server_config["port"],
-            server_config["username"]
-        )
-
-        try:
-            deployer.connect()
-            deployer.create_
