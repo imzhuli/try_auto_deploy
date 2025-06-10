@@ -44,7 +44,21 @@ class RemoteServerDeployer:
         """在远程服务器上创建目录"""
         if not self.client:
             raise Exception("Not connected to a server")
+        
+        r,_,_= self.client.exec_command(f"mkdir -p {directory_path}")
+        return r
 
-        self.client.exec_command(f"mkdir -p {directory_path}")
+    def build_service_directory_tree(self, home_path):
+        if not self.client:
+            raise Exception("Not connected to a server")
+        sum = 0
+        sum = sum + self.create_directory(home_path)
+        sum = sum + self.create_directory(home_path + "/bin")
+        sum = sum + self.create_directory(home_path + "/config")
+        sum = sum + self.create_directory(home_path + "/data")
+        sum = sum + self.create_directory(home_path + "/local_data")
+        return sum == 0
+
+
 
 # 示例用法

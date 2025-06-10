@@ -85,9 +85,6 @@ class ServerConnectionConfig:
             print(self.template_param_dir)
 
 
-
-
-
 class ServerListBuilder:
 
     def __init__(self, directory_path):
