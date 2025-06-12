@@ -1,7 +1,6 @@
 import paramiko
-import time
 
-class RemoteServerDeployer:
+class RemoteRunner:
     def __init__(self, hostname, port, username):
         self.hostname = hostname
         self.port = port
@@ -31,33 +30,20 @@ class RemoteServerDeployer:
 
         return exit_status, output, error
 
-    def upload_file(self, local_path, remote_path):
-        """上传文件到远程服务器"""
+    def upload_file(self, local_path, remote_path, extra_stat = None):
+        """防止传入pathlib.Path"""
+        remote_path = str(remote_path) 
         if not self.client:
             raise Exception("Not connected to a server")
+        with self.client.open_sftp() as sftp:
+            sftp.put(local_path, remote_path)
+            if type(extra_stat) == int:
+                current_permissions = sftp.stat(remote_path).st_mode
+                new_persissions = current_permissions | extra_stat
+                sftp.chmod(remote_path, new_persissions)
+        return
+    
 
-        sftp = self.client.open_sftp()
-        sftp.put(local_path, remote_path)
-        sftp.close()
-
-    def create_directory(self, directory_path):
-        """在远程服务器上创建目录"""
-        if not self.client:
-            raise Exception("Not connected to a server")
-        
-        r,_,_= self.client.exec_command(f"mkdir -p {directory_path}")
-        return r
-
-    def build_service_directory_tree(self, home_path):
-        if not self.client:
-            raise Exception("Not connected to a server")
-        sum = 0
-        sum = sum + self.create_directory(home_path)
-        sum = sum + self.create_directory(home_path + "/bin")
-        sum = sum + self.create_directory(home_path + "/config")
-        sum = sum + self.create_directory(home_path + "/data")
-        sum = sum + self.create_directory(home_path + "/local_data")
-        return sum == 0
 
 
 

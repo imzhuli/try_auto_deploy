@@ -1,0 +1,91 @@
+import components.ssh_client as sc
+import components.x as x
+import stat
+
+from pathlib import Path
+
+
+class ServerBase:
+
+    def __init__(self, server_schema):
+        host, port, username = x.parse_url(server_schema)
+        print(host, port, username)
+        self.runner =sc.RemoteRunner(host, port, username)
+        
+    def __enter__(self):
+        self.runner.connect()
+        return self
+        
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if exc_type:
+            print(f"exception: {exc_type.__name__}, msg: {exc_val}, call_stack: {exc_tb}")
+        self.runner.disconnect()  
+        return True  # 抑制异常
+    
+    
+    def exec(self, command):
+        r,output,_ = self.runner.execute_command(command)
+        return r, output
+
+
+    def create_remote_directory(self, directory_path):
+        r,_,_= self.runner.execute_command(f"mkdir -p {directory_path}")
+        return r
+    
+    def make_remote_dirs(self, remote_home_dir):
+        if not hasattr(self, "dirs"):
+            print('build dirs')
+        home_path = Path(remote_home_dir)
+        
+        self.dirs = x.Object()
+        self.dirs.home = home_path
+        self.dirs.bin = home_path / "bin"
+        self.dirs.config = home_path / "config"
+        self.dirs.data = home_path / "data"
+        self.dirs.cache = home_path / "cache"
+        
+        sum = 0
+        sum = sum | self.create_remote_directory(self.dirs.home)
+        sum = sum | self.create_remote_directory(self.dirs.bin)
+        sum = sum | self.create_remote_directory(self.dirs.config)
+        sum = sum | self.create_remote_directory(self.dirs.data)
+        sum = sum | self.create_remote_directory(self.dirs.cache)
+        if sum != 0:
+            del self.dirs
+            return False
+        return True
+    
+    def upload_bin(self, local_filename):
+        if type(local_filename) == str:
+            self.runner.upload_file(local_filename, self.dirs.bin / Path(local_filename).name, extra_stat=stat.S_IXUSR)
+            return
+        if type(local_filename) == list or type(local_filename) == tuple:
+            for item in local_filename:
+                if type(item) != str:
+                    raise RuntimeError("invalid param type")
+                self.runner.upload_file(item, self.dirs.bin / Path(item).name, extra_stat=stat.S_IXUSR)
+        return
+    
+    def upload_config(self, local_filename):
+        if type(local_filename) == str:
+            self.runner.upload_file(local_filename, self.dirs.config / Path(local_filename).name)
+            return
+        if type(local_filename) == list or type(local_filename) == tuple:
+            for item in local_filename:
+                if type(item) != str:
+                    raise RuntimeError("invalid param type")
+                self.runner.upload_file(item, self.dirs.config / Path(item).name)
+        return
+    
+    def upload_data(self, local_filename):
+        if type(local_filename) == str:
+            self.runner.upload_file(local_filename, self.dirs.data / Path(local_filename).name)
+            return
+        if type(local_filename) == list or type(local_filename) == tuple:
+            for item in local_filename:
+                if type(item) != str:
+                    raise RuntimeError("invalid param type")
+                self.runner.upload_file(item, self.dirs.data / Path(item).name)
+        return
+    
+    

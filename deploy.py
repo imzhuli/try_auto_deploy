@@ -7,7 +7,7 @@ if __name__ != "__main__":
 
 print("尝试自动化产部署开始")
 try:
-    slb = ServerListBuilder("./server.list")
+    slb = ServerListBuilder("./test_assets")
 
 
 except Exception as e:
