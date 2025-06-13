@@ -31,8 +31,7 @@ class ServerBase:
         return r
 
     def make_remote_dirs(self, remote_home_dir):
-        if not hasattr(self, "dirs"):
-            print("build dirs")
+        x.rt_assert(not hasattr(self, "dirs"))
         home_path = Path(remote_home_dir)
 
         self.dirs = x.Object()
@@ -108,6 +107,4 @@ class ServerBase:
             quoted.append(shlex.quote(str(arg)))
 
         cmd = f"cd {cwd}; {full_scirpt_path} {' '.join(quoted)}"
-        print(cmd)
-
         return self.runner.execute_command(cmd)

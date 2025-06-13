@@ -12,11 +12,12 @@ with sb.ServerBase("root@ts_1") as runner:
     runner.make_remote_dirs(home)
 
     binary_source_dir = "./test_assets/service.binary"
+    binary_source_files = ["server_config_center", "server_device_selector", "server_proxy_access", "server_server_id_center"]
     binaries = []
-    for item in os.listdir(binary_source_dir):
+    for item in binary_source_files:
         full_path = os.path.join(binary_source_dir, item)
         binaries.append(full_path)
-    # runner.upload_bin(binaries)
+    runner.upload_bin(binaries)
 
     runner.upload_config(["./test_assets/service.config.output.temp/00-server-config.ini"])
 
