@@ -75,7 +75,7 @@ class RemoteRunner:
                     new_persissions = current_permissions | extra_stat
                     sftp.chmod(remote_path, new_persissions)
         else:
-            print(f"checkshum match ({local_checksum}), upload file omitted: (local){local_path!r} --> (remote){remote_path!r}")
+            print(f"upload file omitted, checksum match (md5={local_checksum}) (local){local_path!r} --> (remote){remote_path!r}")
 
         return
 

@@ -16,9 +16,19 @@ with sb.ServerBase("root@ts_1") as runner:
     for item in os.listdir(binary_source_dir):
         full_path = os.path.join(binary_source_dir, item)
         binaries.append(full_path)
+    # runner.upload_bin(binaries)
 
-    runner.upload_bin(binaries)
     runner.upload_config(["./test_assets/service.config.output.temp/00-server-config.ini"])
-    # r, o = runner.exec(f"ls {home}")
-    # print(o)
+
+    script_source_dir = "./test_assets/service.script"
+    script_source_files = ["get_pid_by_full_path.sh"]
+    scripts = []
+    for item in script_source_files:
+        full_path = os.path.join(script_source_dir, item)
+        scripts.append(full_path)
+    runner.upload_script(scripts)
+
+    _, o, _ = runner.run_script("get_pid_by_full_path.sh", "/usr/bin/python3")
+    print(o)
+
     pass
