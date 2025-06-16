@@ -2,14 +2,12 @@ import sys
 from urllib.parse import urlparse
 
 
-class Object(object):
+class Object:
     def __init__(self):
         self.d = {}
 
     def __setattr__(self, key, value):
         self.__dict__[key] = value
-
-    pass
 
 
 def rt_assert(cond, hint_on_failure=None):

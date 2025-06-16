@@ -19,17 +19,17 @@ with sb.ServerBase("root@ts_1") as runner:
         binaries.append(full_path)
     runner.upload_bin(binaries)
 
-    runner.upload_config(["./test_assets/service.config.output.temp/00-server-config.ini"])
+    runner.upload_config(["./test_assets/service.config.output.temp/00-server-id-center.ini"])
 
     script_source_dir = "./test_assets/service.script"
-    script_source_files = ["get_pid_by_full_path.sh"]
+    script_source_files = ["get_pid_by_full_path.sh", "restart_server_id_center.sh"]
     scripts = []
     for item in script_source_files:
         full_path = os.path.join(script_source_dir, item)
         scripts.append(full_path)
     runner.upload_script(scripts)
 
-    _, o, _ = runner.run_script("get_pid_by_full_path.sh", "/usr/bin/python3")
+    _, o, _ = runner.run_script("restart_server_id_center.sh")
     print(o)
 
     pass
