@@ -2,7 +2,6 @@ import components.server_base as sb
 import components.server_config as sc
 import components.x as x
 
-import test_assets.prepare as prepare
 import os
 import yaml
 
@@ -72,5 +71,4 @@ def DeployService(config_file):
 
 
 if __name__ == "__main__":
-    # prepare.exec(clean=False)
     DeployService("./test_assets/server/00-server-id.yaml")
