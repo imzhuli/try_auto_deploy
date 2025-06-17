@@ -51,7 +51,7 @@ def DeployService(config_file):
                 configs.append(full_path)
             runner.upload_config(configs)
 
-            scripts = []
+            scripts = [str(source_script_dir / "service_control.sh")]
             for item in source_scripts:
                 full_path = str(source_script_dir / item)
                 scripts.append(full_path)
