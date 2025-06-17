@@ -57,14 +57,14 @@ def DeployService(config_file):
                 scripts.append(full_path)
             runner.upload_script(scripts)
 
-            print(f'run script: {install_script} {["start"] + source_configs}')
-            _, o, e = runner.run_script(install_script, *(["stop"] + source_configs))
+            _, o, e = runner.run_script(install_script, *(["stop"]))
             print(o, end="")
             print(e, end="")
+            print(f'run script: {install_script} {["start"] + source_configs}')
             _, o, e = runner.run_script(install_script, *(["start"] + source_configs))
             print(o, end="")
             print(e, end="")
-            _, o, e = runner.run_script(install_script, *(["status"] + source_configs))
+            _, o, e = runner.run_script(install_script, *(["status"]))
             print(o, end="")
             print(e, end="")
             pass
