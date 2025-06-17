@@ -88,4 +88,4 @@ def DeployService(config_file):
             print(o, end="")
             print(e, end="")
             pass
-    print(f"<<< finished deployment ---> {config_file}")
+    print(f"<<< finished deployment")
