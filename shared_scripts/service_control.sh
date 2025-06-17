@@ -14,7 +14,6 @@ fi
 
 CMD="$1"
 BIN="$PWD/bin/$2"
-echo "bin=$BIN"
 
 get_pid_by_full_path() {        
     if [ -z "$1" ]; then
@@ -45,7 +44,7 @@ case "$CMD" in
             exit 1
         fi
         CFG="${PWD}/config/$3"
-        echo starting service: "$BIN" -c "$CFG"
+        echo starting service: "(pwd=$PWD)" "$BIN" -c "$CFG"
         nohup "$BIN" -c "$CFG" > /dev/null 2>&1 &
         ;;
     stop)

@@ -26,12 +26,14 @@ def DeployService(config_file):
         source_binary_dir = source_home / "service.binary"
         source_config_template_dir = source_home / "service.config.template"
         source_config_temp_output_dir = source_home / "service.config.output.temp"
+        source_data_dir = source_home / "service.data"
         source_script_dir = source_home / "service.script"
 
-        source_configs = source.get("config", [])
+        source_config_files = source.get("config_files", [])
         source_config_values = source.get("config_values", {})
+        source_data_files = source.get("data_files", [])
 
-        for file in source_configs:
+        for file in source_config_files:
             source_config_template_file_path = source_config_template_dir / file
             sc.make_config(source_config_template_file_path, source_config_temp_output_dir, source_config_values)
 
@@ -48,11 +50,17 @@ def DeployService(config_file):
                 binaries.append(full_path)
             runner.upload_bin(binaries)
 
-            configs = []
-            for item in source_configs:
+            config_files = []
+            for item in source_config_files:
                 full_path = str(source_config_temp_output_dir / item)
-                configs.append(full_path)
-            runner.upload_config(configs)
+                config_files.append(full_path)
+            runner.upload_config(config_files)
+
+            data_files = []
+            for item in source_data_files:
+                full_path = str(source_data_dir / item)
+                data_files.append(full_path)
+            runner.upload_data(data_files)
 
             scripts = []
             shared_script_dir = os.path.join(current_script_dir, "shared_scripts")
@@ -66,19 +74,16 @@ def DeployService(config_file):
                 scripts.append(full_path)
             runner.upload_script(scripts)
 
+            print("stopping privous service processes")
             _, o, e = runner.run_script(install_script, *(["stop"]))
             print(o, end="")
             print(e, end="")
-            print(f'run script: {install_script} {["start"] + source_configs}')
-            _, o, e = runner.run_script(install_script, *(["start"] + source_configs))
+            print("starting service processes")
+            _, o, e = runner.run_script(install_script, *(["start"] + source_config_files))
             print(o, end="")
             print(e, end="")
+            print("check service process status")
             _, o, e = runner.run_script(install_script, *(["status"]))
             print(o, end="")
             print(e, end="")
             pass
-
-
-if __name__ == "__main__":
-    DeployService("./test_assets/server/00-server-server-id.yaml")
-    # DeployService("./test_assets/server/01-server-config-center.yaml")
