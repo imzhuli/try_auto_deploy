@@ -45,6 +45,7 @@ case "$CMD" in
         fi
         CFG="${PWD}/config/$3"
         echo starting service: "(pwd=$PWD)" "$BIN" -c "$CFG"
+        ulimit -n 99999
         nohup "$BIN" -c "$CFG" > /dev/null 2>&1 &
         ;;
     stop)

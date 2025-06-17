@@ -13,6 +13,7 @@ current_script_dir = os.path.dirname(current_script_path)
 
 def DeployService(config_file):
 
+    print(f">>> finished deployment ---> {config_file}")
     with open(config_file) as config_contents:
         yd = yaml.safe_load(config_contents)
 
@@ -87,3 +88,4 @@ def DeployService(config_file):
             print(o, end="")
             print(e, end="")
             pass
+    print(f"<<< finished deployment ---> {config_file}")
