@@ -7,6 +7,9 @@ import yaml
 
 from pathlib import Path
 
+current_script_path = os.path.abspath(__file__)
+current_script_dir = os.path.dirname(current_script_path)
+
 
 def DeployService(config_file):
 
@@ -51,7 +54,13 @@ def DeployService(config_file):
                 configs.append(full_path)
             runner.upload_config(configs)
 
-            scripts = [str(source_script_dir / "service_control.sh")]
+            scripts = []
+            shared_script_dir = os.path.join(current_script_dir, "shared_scripts")
+            for item in os.listdir(shared_script_dir):
+                full_path = os.path.join(shared_script_dir, item)
+                if not os.path.isfile(full_path):
+                    continue
+                scripts.append(full_path)
             for item in source_scripts:
                 full_path = str(source_script_dir / item)
                 scripts.append(full_path)
@@ -71,4 +80,5 @@ def DeployService(config_file):
 
 
 if __name__ == "__main__":
-    DeployService("./test_assets/server/00-server-id.yaml")
+    DeployService("./test_assets/server/00-server-server-id.yaml")
+    # DeployService("./test_assets/server/01-server-config-center.yaml")
