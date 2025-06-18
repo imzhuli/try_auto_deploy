@@ -37,7 +37,7 @@ get_pid_by_full_path() {
 
 PIDS=$(get_pid_by_full_path "$BIN")
 case "$CMD" in 
-    start)    
+    start)
         if [ -z "$3" ]; then
             echo "missing config"
             exit 1

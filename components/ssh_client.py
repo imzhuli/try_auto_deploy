@@ -68,6 +68,7 @@ class RemoteRunner:
 
         if force:
             print(f"upload file: (local){local_path!r} --> (remote){remote_path!r}")
+            self.execute_command(f"rm {remote_path!r}")
             with self.client.open_sftp() as sftp:
                 sftp.put(local_path, remote_path)
                 if type(extra_stat) == int:

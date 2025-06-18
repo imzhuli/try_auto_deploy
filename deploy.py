@@ -3,6 +3,7 @@ import components.server_config as sc
 import components.x as x
 
 import os
+import time
 import yaml
 
 from pathlib import Path
@@ -84,6 +85,7 @@ def DeployService(config_file):
             print(o, end="")
             print(e, end="")
             print("check service process status")
+            time.sleep(1)
             _, o, e = runner.run_script(install_script, *(["status"]))
             print(o, end="")
             print(e, end="")
