@@ -23,7 +23,6 @@ get_pid_by_full_path() {
 
     APP=`realpath "$1"`
     ps -ww -e -o pid | awk 'NR>1 {print $0}' | while read -r line; do
-        #path=`realpath "/proc/$line/exe" 2>/dev/null | sed 's/ (deleted)$//' `
         path=$(readlink -f "/proc/${line}/exe" 2>/dev/null | sed 's/ (deleted)$//')
         if [ -z "$path" ]; then
             continue
@@ -43,10 +42,10 @@ case "$CMD" in
             echo "missing config"
             exit 1
         fi
-        CFG="${PWD}/config/$3"
-        echo starting service: "(pwd=$PWD)" "$BIN" -c "$CFG"
+        CFG="$PWD/config/$3"
+        echo starting service: "(pwd=$PWD)" "$BIN" -h "$PWD" -c "$CFG"
         ulimit -n 99999
-        nohup "$BIN" -c "$CFG" > /dev/null 2>&1 &
+        nohup "$BIN" -h "$PWD" -c "$CFG" > /dev/null 2>&1 &
         ;;
     stop)
         if [ -z "$PIDS" ]; then 
