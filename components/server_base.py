@@ -20,7 +20,7 @@ class ServerBase:
         if exc_type:
             print(f"exception: {exc_type.__name__}, msg: {exc_val}, call_stack: {exc_tb}")
         self.runner.disconnect()
-        return True  # 抑制异常
+        return False  # 不抑制异常
 
     def exec(self, command):
         r, output, _ = self.runner.execute_command(command)

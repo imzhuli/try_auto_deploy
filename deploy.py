@@ -32,17 +32,22 @@ def DeployService(config_file):
         source_data_dir = source_home / "service.data"
         source_script_dir = source_home / "service.script"
 
-        source_config_files = source.get("config_files", [])
-        source_config_values = source.get("config_values", {})
-        source_data_files = source.get("data_files", [])
+        source_config_files = source.get("config_files")
+        source_config_files = source_config_files if source_config_files is not None else []
+        source_config_values = source.get("config_values")
+        source_config_values = source_config_values if source_config_values is not None else {}
+        source_data_files = source.get("data_files")
+        source_data_files = source_data_files if source_data_files is not None else []
 
         for file in source_config_files:
             source_config_template_file_path = source_config_template_dir / file
             sc.make_config(source_config_template_file_path, source_config_temp_output_dir, source_config_values)
 
         source_binaries = source["binaries"]
-        source_scripts = source["scripts"]
-        install_script = source.get("install_script")
+        source_scripts = source.get("scripts")
+        source_scripts = source_scripts if source_scripts is not None else []
+        install_script = source.get("install_script", None)
+
         with sb.ServerBase(f"{server_user}@{server_address}") as runner:
             x.p(f"make home dir : {server_home_dir}")
             runner.make_remote_dirs(server_home_dir)
@@ -96,7 +101,6 @@ def DeployService(config_file):
                 remote_home_full_path = shlex.quote(str(runner.dirs.home))
                 remote_service_controller_full_path = shlex.quote(str(runner.dirs.script / "service_control.sh"))
                 for item in source_binaries:
-                    remote_binary_full_path = runner.dirs.bin / item
                     stop_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} stop {item}"
                     start_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} start {item} { " ".join(source_config_files)}"
                     check_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} status {item}"
