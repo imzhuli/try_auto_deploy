@@ -108,3 +108,6 @@ class ServerBase:
 
         cmd = f"cd {cwd}; {full_scirpt_path} {' '.join(quoted)}"
         return self.runner.execute_command(cmd)
+
+    def execute_command(self, cmd):
+        return self.runner.execute_command(cmd)

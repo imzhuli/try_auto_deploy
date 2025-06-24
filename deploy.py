@@ -5,6 +5,7 @@ import components.x as x
 import os
 import time
 import yaml
+import shlex
 
 from pathlib import Path
 
@@ -48,20 +49,20 @@ def DeployService(config_file):
 
             binaries = []
             for item in source_binaries:
-                full_path = str(source_binary_dir / item)
-                binaries.append(full_path)
+                full_path = source_binary_dir / item
+                binaries.append(shlex.quote(str(full_path)))
             runner.upload_bin(binaries)
 
             config_files = []
             for item in source_config_files:
                 full_path = str(source_config_temp_output_dir / item)
-                config_files.append(full_path)
+                config_files.append(shlex.quote(str(full_path)))
             runner.upload_config(config_files)
 
             data_files = []
             for item in source_data_files:
                 full_path = str(source_data_dir / item)
-                data_files.append(full_path)
+                data_files.append(shlex.quote(str(full_path)))
             runner.upload_data(data_files)
 
             scripts = []
@@ -70,24 +71,47 @@ def DeployService(config_file):
                 full_path = os.path.join(shared_script_dir, item)
                 if not os.path.isfile(full_path):
                     continue
-                scripts.append(full_path)
+                scripts.append(shlex.quote(str(full_path)))
             for item in source_scripts:
-                full_path = str(source_script_dir / item)
-                scripts.append(full_path)
+                full_path = source_script_dir / item
+                scripts.append(shlex.quote(str(full_path)))
             runner.upload_script(scripts)
 
-            print("stopping privous service processes")
-            _, o, e = runner.run_script(install_script, *(["stop"]))
-            print(o, end="")
-            print(e, end="")
-            print("starting service processes")
-            _, o, e = runner.run_script(install_script, *(["start"] + source_config_files))
-            print(o, end="")
-            print(e, end="")
-            print("check service process status")
-            time.sleep(1)
-            _, o, e = runner.run_script(install_script, *(["status"]))
-            print(o, end="")
-            print(e, end="")
+            print("install_script =", install_script)
+            if install_script is not None:
+                print("stopping privous service processes")
+                _, o, e = runner.run_script(install_script, *(["stop"]))
+                print(o, end="")
+                print(e, end="")
+                print("starting service processes")
+                _, o, e = runner.run_script(install_script, *(["start"] + source_config_files))
+                print(o, end="")
+                print(e, end="")
+                print("check service process status")
+                time.sleep(1)
+                _, o, e = runner.run_script(install_script, *(["status"]))
+                print(o, end="")
+                print(e, end="")
+            else:
+                remote_home_full_path = shlex.quote(str(runner.dirs.home))
+                remote_service_controller_full_path = shlex.quote(str(runner.dirs.script / "service_control.sh"))
+                for item in source_binaries:
+                    remote_binary_full_path = runner.dirs.bin / item
+                    stop_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} stop {item}"
+                    start_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} start {item} { " ".join(source_config_files)}"
+                    check_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} status {item}"
+                    print("stopping privous service processes")
+                    _, o, e = runner.execute_command(stop_cmd)
+                    print(o, end="")
+                    print(e, end="")
+                    print("starting service processes")
+                    _, o, e = runner.execute_command(start_cmd)
+                    print(o, end="")
+                    print(e, end="")
+                    print("check service process status")
+                    time.sleep(1)
+                    _, o, e = runner.execute_command(check_cmd)
+                    print(o, end="")
+                    print(e, end="")
             pass
     print(f"<<< finished deployment")
