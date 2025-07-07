@@ -39,6 +39,16 @@ def DeployService(config_file):
         source_data_files = source.get("data_files")
         source_data_files = source_data_files if source_data_files is not None else []
 
+        pre_defined_config_home_dir = source_config_values.get("home_dir", server_home_dir)
+        pre_defined_source_config_values = {
+            "HOME_DIR": pre_defined_config_home_dir,
+            "BIN_DIR": os.path.join(pre_defined_config_home_dir, "bin"),
+            "CACHE_DIR": os.path.join(pre_defined_config_home_dir, "cache"),
+            "CONFIG_DIR": os.path.join(pre_defined_config_home_dir, "config"),
+            "DATA_DIR": os.path.join(pre_defined_config_home_dir, "data"),
+            "SCRIPT_DIR": os.path.join(pre_defined_config_home_dir, "script"),
+        }
+        source_config_values = {**pre_defined_source_config_values, **source_config_values}
         for file in source_config_files:
             source_config_template_file_path = source_config_template_dir / file
             sc.make_config(source_config_template_file_path, source_config_temp_output_dir, source_config_values)
