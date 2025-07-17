@@ -71,7 +71,6 @@ class RemoteRunner:
             if backup:
                 remote_backup_path = remote_path + ".bak." + datetime.now().strftime("%Y-%m-%d.%H:%M:%S")
                 self.execute_command(f"cp {remote_path!r} {remote_backup_path!r}")
-
             print(f"upload file: (local){local_path!r} --> (remote){remote_path!r}")
             self.execute_command(f"rm {remote_path!r}")
             with self.client.open_sftp() as sftp:
