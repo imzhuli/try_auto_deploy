@@ -1,5 +1,6 @@
 import paramiko
 import subprocess
+from datetime import datetime
 
 
 def _get_system_md5(file_path):
@@ -47,7 +48,7 @@ class RemoteRunner:
 
         return exit_status, output, error
 
-    def upload_file(self, local_path, remote_path, extra_stat=None, force=False):
+    def upload_file(self, local_path, remote_path, extra_stat=None, force=False, backup=True):
         """防止传入pathlib.Path"""
         remote_path = str(remote_path)
         if not self.client:
@@ -67,6 +68,10 @@ class RemoteRunner:
                     force = True
 
         if force:
+            if backup:
+                remote_backup_path = remote_path + ".bak." + datetime.now().strftime("%Y-%m-%d.%H:%M:%S")
+                self.execute_command(f"cp {remote_path!r} {remote_backup_path!r}")
+
             print(f"upload file: (local){local_path!r} --> (remote){remote_path!r}")
             self.execute_command(f"rm {remote_path!r}")
             with self.client.open_sftp() as sftp:
