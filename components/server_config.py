@@ -28,6 +28,7 @@ def generate_config_dir(template_dir, config_output_dir, key_values={}, clear_co
 def make_config(template_file, output_dir, key_values):
     x.rt_assert(isinstance(template_file, Path))
     x.rt_assert(isinstance(output_dir, Path))
+    key_values = {k: v if v is not None else "" for k, v in key_values.items()}
     output_file = output_dir / template_file.name
     with open(template_file, "r") as template:
         config_content = Template(template.read()).substitute(key_values)
