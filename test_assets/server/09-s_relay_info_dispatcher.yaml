@@ -1,0 +1,24 @@
+server:
+  # address: ts_1
+  address: 127.0.0.1
+  user: ubuntu
+  home_dir: /home/ubuntu/test/
+
+source:
+  home_dir: ./test_assets/
+  binaries:
+    - s_relay_info_dispatcher
+  config_files:
+    - s_relay_info_dispatcher.xini
+  config_values:
+    ProducerAddress: 0.0.0.0:10900
+    ObserverAddress: 0.0.0.0:10901
+    ExportProducerAddress: 127.0.0.1:10900
+    ExportObserverAddress: 127.0.0.1:10901
+    
+    ServerIdCenterAddress: 127.0.0.1:10000
+    ServerListRegisterAddress: 127.0.0.1:10200
+  scripts:
+  install_script:
+
+

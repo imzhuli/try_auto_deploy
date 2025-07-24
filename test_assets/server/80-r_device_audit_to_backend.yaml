@@ -1,0 +1,25 @@
+server:
+  # address: ts_1
+  address: 127.0.0.1
+  user: ubuntu
+  home_dir: /home/ubuntu/test/
+
+source:
+  home_dir: ./test_assets/
+  binaries:
+    - r_device_audit_to_backend
+  config_files:
+    - r_device_audit_to_backend.xini
+  config_values:
+    ServerListDownloadAddress: 127.0.0.1:10201
+    SecurityProtocol: SASL_PLAINTEXT
+    SaslMechanism: SCRAM-SHA-256
+    SaslUsername: client
+    SaslPassword: client123456
+    BootstrapServerList: 
+      - 45.197.7.51:9085
+    Topic: dev-p-device-info
+  scripts:
+  install_script:
+
+

@@ -1,0 +1,7 @@
+ServerListDownloadAddress=${ServerListDownloadAddress}
+
+BindAddressForDevice=${BindAddressForDevice}
+BindAddressForDeviceV6Test=${BindAddressForDeviceV6Test}
+
+GeoInfoMapFilename=${DATA_DIR}/ip-loc-region-list.csv
+IpLocationDbFilename=${DATA_DIR}/ip-loc.BIN

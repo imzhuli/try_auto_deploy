@@ -46,7 +46,9 @@
 /_corex_installed
 /bak
 /logs
-/test_assets
+/test_assets/service.binary
+/test_assets/service.config.output.temp
+/test_assets/service.data
 __pycache__
 _generated
 

@@ -1,0 +1,8 @@
+
+ServerIdCenterAddress=${ServerIdCenterAddress}
+ServerListRegisterAddress=${ServerListRegisterAddress}
+
+ProducerAddress=${ProducerAddress}
+ObserverAddress=${ObserverAddress}
+ExportProducerAddress=${ExportProducerAddress}
+ExportObserverAddress=${ExportObserverAddress}

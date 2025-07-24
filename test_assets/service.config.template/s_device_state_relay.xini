@@ -1,0 +1,8 @@
+
+ServerIdCenterAddress=${ServerIdCenterAddress}
+ServerListRegisterAddress=${ServerListRegisterAddress}
+
+BindProducerAddress=${BindProducerPort}
+BindObserverAddress=${BindObserverPort}
+ExportProducerAddress=${ExportProducerAddress}
+ExportObserverAddress=${ExportObserverPort}

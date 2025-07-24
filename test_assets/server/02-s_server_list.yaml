@@ -1,0 +1,20 @@
+server:
+  # address: ts_1
+  address: 127.0.0.1
+  user: ubuntu
+  home_dir: /home/ubuntu/test/
+
+source:
+  home_dir: ./test_assets/
+  binaries:
+    - s_server_list
+  config_files:
+    - s_server_list.xini
+    - backend_server_list.txt
+  config_values:
+    RegisterServiceBindAddress: 0.0.0.0:10200
+    DownloadServiceBindAddress: 0.0.0.0:10201
+  scripts:
+  install_script: 
+
+
