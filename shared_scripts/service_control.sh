@@ -44,7 +44,7 @@ case "$CMD" in
         fi
         CFG="$PWD/config/$3"
         echo starting service: "(pwd=$PWD)" "$BIN" -h "$PWD" -c "$CFG"
-        ulimit -n 99999
+        ulimit -n 999999
         nohup "$BIN" -h "$PWD" -c "$CFG" > /dev/null 2>&1 &
         ;;
     stop)
@@ -52,8 +52,10 @@ case "$CMD" in
             echo "no previous service process found"
         else
             echo "$PIDS" | while read -r line; do 
-                echo killing process $line ...
-                $(kill -9 $line)
+                if [ -n "$line" ]; then
+                    echo killing process $line ...
+                    $(kill -9 $line)
+                fi
             done
         fi
         ;;
