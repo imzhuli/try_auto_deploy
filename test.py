@@ -20,11 +20,11 @@ if __name__ == "__main__":
 
     ##DeployService("./test_assets/server/13-s_device_selector.yaml")
 
-    ##DeployService("./test_assets/server/14-s_audit_account.yaml")
-    DeployService("./test_assets/server/15-s_pa.yaml")
+    DeployService("./test_assets/server/14-s_audit_account.yaml")
+    ##DeployService("./test_assets/server/15-s_pa.yaml")
 
     ## DeployService("./test_assets/server/80-r_device_audit_to_backend.yaml")
 
-    # DeployService("./test_assets/server/98-t_server_list_downloader.yaml")
+    ##DeployService("./test_assets/server/98-t_server_list_downloader.yaml")
 
     pass
