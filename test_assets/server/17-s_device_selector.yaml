@@ -11,8 +11,8 @@ source:
   config_files:
     - s_device_selector.xini
   config_values:
-    BindAddress: 0.0.0.0:11300
-    ExportServerAddress: 127.0.0.1:11300
+    BindAddress: 0.0.0.0:11700
+    ExportServerAddress: 127.0.0.1:11700
 
     ServerIdCenterAddress: 127.0.0.1:10000
     ServerListRegisterAddress: 127.0.0.1:10200

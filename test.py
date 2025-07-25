@@ -18,9 +18,10 @@ if __name__ == "__main__":
     ##DeployService("./test_assets/server/11-s_device_state_relay.yaml")
     ##DeployService("./test_assets/server/12-s_auth_cache.yaml")
 
-    ##DeployService("./test_assets/server/13-s_device_selector.yaml")
+    DeployService("./test_assets/server/16-s_device_selector_dispatcher.yaml")
+    ##DeployService("./test_assets/server/17-s_device_selector.yaml")
 
-    DeployService("./test_assets/server/14-s_audit_account.yaml")
+    ##DeployService("./test_assets/server/14-s_audit_account.yaml")
     ##DeployService("./test_assets/server/15-s_pa.yaml")
 
     ## DeployService("./test_assets/server/80-r_device_audit_to_backend.yaml")

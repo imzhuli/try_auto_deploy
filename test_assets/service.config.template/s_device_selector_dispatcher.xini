@@ -1,0 +1,7 @@
+BindAddressForClient=${BindAddressForClient}
+ExportBindAddressForClient=${ExportBindAddressForClient}
+BindAddressForServer=${BindAddressForServer}
+ExportBindAddressForServer=${ExportBindAddressForServer}
+
+ServerIdCenterAddress=${ServerIdCenterAddress}
+ServerListRegisterAddress=${ServerListRegisterAddress}
