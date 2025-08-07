@@ -1,0 +1,4 @@
+OutputBindAddress4=${OutputBindAddress4}
+OutputBindAddress6=${OutputBindAddress6}
+TestAddressServerAddress4=${TestAddressServerAddress4}
+TestAddressServerAddress6=${TestAddressServerAddress6}

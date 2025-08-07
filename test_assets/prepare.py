@@ -27,7 +27,7 @@ def exec(clean=True):
                 print(f"Deleted directory: {file_path}")
 
     for filename in os.listdir(source_path):
-        if not filename.startswith("s_") and not filename.startswith("t_") and not filename.startswith("r_"):
+        if not filename.startswith("s_") and not filename.startswith("t_") and not filename.startswith("r_") and not filename.startswith("x_"):
             continue
 
         source_filename = os.path.join(source_path, filename)

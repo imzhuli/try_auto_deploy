@@ -1,0 +1,19 @@
+server:
+  # address: ts_1
+  address: 162.128.44.26
+  user: ubuntu
+  home_dir: /home/ubuntu/test.server/
+
+source:
+  home_dir: ./test_assets/
+  binaries:
+    - s_address_test
+  config_files:
+    - s_address_test.xini
+  config_values:
+    BindAddress4: 0.0.0.0:19900
+    BindAddress6: "[::]:19900"
+  scripts:
+  install_script: 
+
+
