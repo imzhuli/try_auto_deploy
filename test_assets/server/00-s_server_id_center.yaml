@@ -11,7 +11,8 @@ source:
   config_files:
     - s_server_id_center.xini
   config_values:
-    BindAddress: 0.0.0.0:10000
+    BindAddress4: 0.0.0.0:10000
+    BindAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10000"
   scripts:
   install_script: 
 

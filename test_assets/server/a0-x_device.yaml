@@ -1,6 +1,6 @@
 server:
   # address: ts_1
-  address: 162.128.44.26
+  address: 127.0.0.1
   user: ubuntu
   home_dir: /home/ubuntu/test.device/
 
@@ -11,10 +11,10 @@ source:
   config_files:
     - x_device.xini
   config_values:
-    OutputBindAddress4: "10.0.1.2"
-    OutputBindAddress6: "2602:ffe4:c80:32bb:0:2:0:2"
-    TestAddressServerAddress4: "162.128.44.26:19900"
-    TestAddressServerAddress6: "[2602:ffe4:c80:32bb:0:2:0:2]:19900"
+    OutputBindAddress4: "175.178.22.69"
+    OutputBindAddress6: "2402:4e00:101a:f300:0:9f95:4b15:c0db"
+    TestAddressServerAddress4: "175.178.22.69:19900"
+    TestAddressServerAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:19900"
   scripts:
   install_script: 
 

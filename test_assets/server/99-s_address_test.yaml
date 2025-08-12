@@ -1,6 +1,6 @@
 server:
   # address: ts_1
-  address: 162.128.44.26
+  address: 127.0.0.1
   user: ubuntu
   home_dir: /home/ubuntu/test.server/
 

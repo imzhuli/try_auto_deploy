@@ -10,7 +10,8 @@ if __name__ == "__main__":
     formatted_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print("当前时间:", formatted_time)
 
-    ## DeployService("./test_assets/server/00-s_server_id_center.yaml")
+    DeployService("./test_assets/server/00-s_server_id_center.yaml")
+
     ## DeployService("./test_assets/server/01-s_config_center.yaml")
     ## DeployService("./test_assets/server/02-s_server_list.yaml")
 
@@ -38,7 +39,7 @@ if __name__ == "__main__":
     ## DeployService("./test_assets/server/80-r_device_audit_to_backend.yaml")
 
     ## DeployService("./test_assets/server/99-s_address_test.yaml")
-    DeployService("./test_assets/server/a0-x_device.yaml")
+    ## DeployService("./test_assets/server/a0-x_device.yaml")
 
     ## time.sleep(15)
     ##DeployService("./test_assets/server/98-t_server_list_downloader.yaml")
