@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 from deploy import DeployService
 
-## prepare.exec(clean=False)
+prepare.exec(clean=False)
 
 if __name__ == "__main__":
     formatted_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

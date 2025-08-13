@@ -1,3 +1,6 @@
-RegisterServiceBindAddress=${RegisterServiceBindAddress}
-DownloadServiceBindAddress=${DownloadServiceBindAddress}
+RegisterServiceBindAddress4=${RegisterServiceBindAddress4}
+DownloadServiceBindAddress4=${DownloadServiceBindAddress4}
+RegisterServiceBindAddress6=${RegisterServiceBindAddress6}
+DownloadServiceBindAddress6=${DownloadServiceBindAddress6}
 BackendServerListFilename=${CONFIG_DIR}/backend_server_list.txt
+

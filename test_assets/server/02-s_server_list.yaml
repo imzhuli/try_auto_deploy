@@ -12,8 +12,10 @@ source:
     - s_server_list.xini
     - backend_server_list.txt
   config_values:
-    RegisterServiceBindAddress: 0.0.0.0:10200
-    DownloadServiceBindAddress: 0.0.0.0:10201
+    RegisterServiceBindAddress4: 0.0.0.0:10200
+    DownloadServiceBindAddress4: 0.0.0.0:10201    
+    RegisterServiceBindAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10200"
+    DownloadServiceBindAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10201"
   scripts:
   install_script: 
 
