@@ -11,8 +11,8 @@ source:
   config_files:
     - s_config_center.xini
   config_values:
-    BindAddressForDevice: 0.0.0.0:10100
-    BindAddressForDeviceV6Test: ""
+    BindAddressForDevice4: 0.0.0.0:10100
+    BindAddressForDevice6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10100"
     ServerListDownloadAddress: 127.0.0.1:10201
   data_files:
     - ip-loc.BIN

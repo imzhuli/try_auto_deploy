@@ -1,10 +1,10 @@
-BindCtrlAddress=0.0.0.0:${CtrlPort}
-BindDataAddress=0.0.0.0:${DataPort}
-BindProxyAddress=0.0.0.0:${ProxyPort}
+BindAddress4=${BindAddress4}
+BindAddress6=${BindAddress6}
+ProxyAddress4=${ProxyAddress4}
+ProxyAddress6=${ProxyAddress6}
 
-ExportCtrlAddress=${ExportIp}:${CtrlPort}
-ExportDataAddress=${ExportIp}:${DataPort}
-ExportProxyAddress=${ExportIp}:${ProxyPort}
+ExportAddress4=${ExportAddress4}
+ExportAddress6=${ExportAddress6}
 
 ServerIdCenterAddress=${ServerIdCenterAddress}
 ServerListDownloadAddress=${ServerListDownloadAddress}

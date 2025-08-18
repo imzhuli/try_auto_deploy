@@ -11,10 +11,15 @@ source:
   config_files:
     - s_relay_info_dispatcher.xini
   config_values:
-    ProducerAddress: 0.0.0.0:10900
-    ObserverAddress: 0.0.0.0:10901
-    ExportProducerAddress: 127.0.0.1:10900
-    ExportObserverAddress: 127.0.0.1:10901
+    ProducerAddress4: 0.0.0.0:10900
+    ProducerAddress6:
+    ObserverAddress4: 0.0.0.0:10901
+    ObserverAddress6: 
+    
+    ExportProducerAddress4: 127.0.0.1:10900
+    ExportObserverAddress4: 127.0.0.1:10901
+    ExportProducerAddress6: 
+    ExportObserverAddress6: 
     
     ServerIdCenterAddress: 127.0.0.1:10000
     ServerListRegisterAddress: 127.0.0.1:10200

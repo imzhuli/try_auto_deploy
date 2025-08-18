@@ -2,7 +2,13 @@
 ServerIdCenterAddress=${ServerIdCenterAddress}
 ServerListRegisterAddress=${ServerListRegisterAddress}
 
-ProducerAddress=${ProducerAddress}
-ObserverAddress=${ObserverAddress}
-ExportProducerAddress=${ExportProducerAddress}
-ExportObserverAddress=${ExportObserverAddress}
+ProducerAddress4=${ProducerAddress4}
+ObserverAddress4=${ObserverAddress4}
+
+ProducerAddress6=${ProducerAddress6}
+ObserverAddress6=${ObserverAddress6}
+
+ExportProducerAddress4=${ExportProducerAddress4}
+ExportObserverAddress4=${ExportObserverAddress4}
+ExportProducerAddress6=${ExportProducerAddress6}
+ExportProducerAddress6=${ExportProducerAddress6}
