@@ -1,5 +1,5 @@
-BindAddress4=${BindAddress4}
-BindAddress6=${BindAddress6}
+DeviceAddress4=${DeviceAddress4}
+DeviceAddress6=${DeviceAddress6}
 ProxyAddress4=${ProxyAddress4}
 ProxyAddress6=${ProxyAddress6}
 

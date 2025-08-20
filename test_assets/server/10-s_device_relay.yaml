@@ -11,8 +11,8 @@ source:
   config_files:
     - s_device_relay.xini
   config_values:
-    BindAddress4: 0.0.0.0:11000
-    BindAddress6:
+    DeviceAddress4: 0.0.0.0:11000
+    DeviceAddress6:
 
     ProxyAddress4: 0.0.0.0:11001
     ProxyAddress6:
