@@ -1,11 +1,8 @@
 server:
-  address: ts_tm
-  user: root
-
-  #address: 127.0.0.1
-  #user: ubuntu
+  address: 127.0.0.1
+  user: ubuntu
   
-  home_dir: /home/ubuntu/test/
+  home_dir: /home/ubuntu/test.server/
 
 source:
   home_dir: ./test_assets/

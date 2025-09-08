@@ -9,4 +9,4 @@ prepare.exec(clean=False)
 if __name__ == "__main__":
     formatted_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print("当前时间:", formatted_time)
-    DeployService("./test_assets/server/02-s_server_list.yaml")
+    DeployService("./test_assets/server/02-s_server_list.yaml", prepare.OverrideFilePath)
