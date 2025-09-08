@@ -3,8 +3,10 @@ DeviceAddress6=${DeviceAddress6}
 ProxyAddress4=${ProxyAddress4}
 ProxyAddress6=${ProxyAddress6}
 
-ExportAddress4=${ExportAddress4}
-ExportAddress6=${ExportAddress6}
+ExportDeviceAddress4=${ExportDeviceAddress4}
+ExportDeviceAddress6=${ExportDeviceAddress6}
+ExportProxyAddress4=${ExportProxyAddress4}
+ExportProxyAddress6=${ExportProxyAddress6}
 
 ServerIdCenterAddress=${ServerIdCenterAddress}
 ServerListDownloadAddress=${ServerListDownloadAddress}

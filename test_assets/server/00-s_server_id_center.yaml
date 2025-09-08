@@ -1,7 +1,7 @@
 server:
-  # address: ts_1
   address: 127.0.0.1
   user: ubuntu
+
   home_dir: /home/ubuntu/test/
 
 source:
@@ -12,7 +12,7 @@ source:
     - s_server_id_center.xini
   config_values:
     BindAddress4: 0.0.0.0:10000
-    BindAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10000"
+    BindAddress6: "[::]:10000"
   scripts:
   install_script: 
 

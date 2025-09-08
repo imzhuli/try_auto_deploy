@@ -1,7 +1,10 @@
 server:
-  # address: ts_1
-  address: 127.0.0.1
-  user: ubuntu
+  address: ts_tm
+  user: root
+
+  #address: 127.0.0.1
+  #user: ubuntu
+  
   home_dir: /home/ubuntu/test/
 
 source:
@@ -18,8 +21,8 @@ source:
     
     ExportProducerAddress4: 127.0.0.1:10900
     ExportObserverAddress4: 127.0.0.1:10901
-    ExportProducerAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10900"
-    ExportObserverAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10901"
+    ExportProducerAddress6: "[::1]:10900"
+    ExportObserverAddress6: "[::1]:10901"
     
     ServerIdCenterAddress: 127.0.0.1:10000
     ServerListRegisterAddress: 127.0.0.1:10200

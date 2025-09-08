@@ -1,8 +1,11 @@
 server:
-  #address: ts_1
-  address: 127.0.0.1
-  user: ubuntu
-  home_dir: /home/ubuntu/test/
+  address: ts_tm
+  user: root
+
+  #address: 127.0.0.1
+  #user: ubuntu
+  
+  home_dir: /home/ubuntu/test.server/
 
 source:
   home_dir: ./test_assets/
@@ -12,15 +15,20 @@ source:
     - s_device_relay.xini
   config_values:
     DeviceAddress4: 0.0.0.0:11000
-    DeviceAddress6:
+    DeviceAddress6: "[::]:11000"
 
     ProxyAddress4: 0.0.0.0:11001
-    ProxyAddress6:
+    ProxyAddress6: "[::]:11001"
 
-    ExportAddress4: 175.178.22.69:11000
-    ExportAddress6:
-    ExportProxyAddress4: 175.178.22.69:11000
-    ExportProxyAddress6:
+    ExportDeviceAddress4: 23.251.100.162:11000
+    ExportDeviceAddress6: "[2604:980:3002:9e::2]:11000"
+    ExportProxyAddress4: 23.251.100.162:11001
+    ExportProxyAddress6: "[2604:980:3002:9e::2]:11001"
+
+    # ExportDeviceAddress4: 
+    # ExportDeviceAddress6: "[::]:11000"
+    # ExportProxyAddress4: 
+    # ExportProxyAddress6: "[::]:11001"
     
     ServerIdCenterAddress: 127.0.0.1:10000
     ServerListDownloadAddress: 127.0.0.1:10201

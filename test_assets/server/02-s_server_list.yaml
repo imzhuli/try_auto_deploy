@@ -1,7 +1,10 @@
 server:
-  # address: ts_1
-  address: 127.0.0.1
-  user: ubuntu
+  address: ts_tm
+  user: root
+
+  #address: 127.0.0.1
+  #user: ubuntu
+  
   home_dir: /home/ubuntu/test/
 
 source:
@@ -13,9 +16,9 @@ source:
     - backend_server_list.txt
   config_values:
     RegisterServiceBindAddress4: 0.0.0.0:10200
-    DownloadServiceBindAddress4: 0.0.0.0:10201    
-    RegisterServiceBindAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10200"
-    DownloadServiceBindAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10201"
+    DownloadServiceBindAddress4: 0.0.0.0:10201
+    RegisterServiceBindAddress6: "[::]:10200"
+    DownloadServiceBindAddress6: "[::]:10201"
   scripts:
   install_script: 
 

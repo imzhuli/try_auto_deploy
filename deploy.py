@@ -13,11 +13,31 @@ current_script_path = os.path.abspath(__file__)
 current_script_dir = os.path.dirname(current_script_path)
 
 
-def DeployService(config_file):
+def DeepMerge(src, override):
+    for key in override:
+        if key in src:
+            if isinstance(src[key], dict) and isinstance(override[key], dict):
+                DeepMerge(src[key], override[key])
+            else:
+                src[key] = override[key]
+        else:
+            src[key] = override[key]
+    return src
+
+
+def DeployService(config_file, override_file=None):
+
+    od = {}
+    print(f"override_file: {override_file}")
+    if override_file is not None:
+        with open(override_file) as config_override_contents:
+            od = yaml.safe_load(config_override_contents)
+    print(f">> config override: ===> {od}")
 
     print(f">>> start deployment ============> {config_file}")
     with open(config_file) as config_contents:
         yd = yaml.safe_load(config_contents)
+        DeepMerge(yd, od)
 
         server_info = yd["server"]
         server_address = server_info["address"]

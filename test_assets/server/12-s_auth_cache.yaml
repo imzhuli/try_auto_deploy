@@ -1,7 +1,7 @@
 server:
-  # address: ts_1
   address: 127.0.0.1
   user: ubuntu
+  
   home_dir: /home/ubuntu/test/
 
 source:

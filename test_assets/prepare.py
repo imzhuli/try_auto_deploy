@@ -1,7 +1,23 @@
+import getopt
 import os
 import shutil
 import sys
 import components.x as x
+
+OverrideFilePath = None
+
+try:
+    argv = sys.argv[1:]
+    print(f"args: {argv}")
+    opts, args = getopt.getopt(argv, "o:")
+except getopt.GetoptError:
+    sys.exit(2)
+for opt, arg in opts:
+    if opt == "-o":
+        OverrideFilePath = os.path.abspath(arg)
+        if not os.path.exists(OverrideFilePath):
+            raise RuntimeError("invalid override path")
+        print(f"prepare.override path: {OverrideFilePath}")
 
 
 def exec(clean=True):
