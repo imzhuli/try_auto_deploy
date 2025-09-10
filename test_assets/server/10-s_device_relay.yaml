@@ -17,15 +17,15 @@ source:
     ProxyAddress4: 0.0.0.0:11001
     ProxyAddress6: "[::]:11001"
 
-    # ExportDeviceAddress4: 23.251.100.162:11000
-    # ExportDeviceAddress6: "[2604:980:3002:9e::2]:11000"
-    # ExportProxyAddress4: 23.251.100.162:11001
-    # ExportProxyAddress6: "[2604:980:3002:9e::2]:11001"
+    ExportDeviceAddress4: 23.251.100.162:11000
+    ExportDeviceAddress6: "[2604:980:3002:9e::2]:11000"
+    ExportProxyAddress4: 23.251.100.162:11001
+    ExportProxyAddress6: "[2604:980:3002:9e::2]:11001"
 
-    ExportDeviceAddress4: 175.178.22.69:11000
-    ExportDeviceAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:11000"
-    ExportProxyAddress4: 175.178.22.69:11001
-    ExportProxyAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:11001"
+    # ExportDeviceAddress4: 175.178.22.69:11000
+    # ExportDeviceAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:11000"
+    # ExportProxyAddress4: 175.178.22.69:11001
+    # ExportProxyAddress6: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:11001"
     
     ServerIdCenterAddress: 127.0.0.1:10000
     ServerListDownloadAddress: 127.0.0.1:10201

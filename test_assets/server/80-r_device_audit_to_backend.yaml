@@ -1,5 +1,4 @@
 server:
-  # address: ts_1
   address: 127.0.0.1
   user: ubuntu
   home_dir: /home/ubuntu/test/
@@ -14,11 +13,11 @@ source:
     ServerListDownloadAddress: 127.0.0.1:10201
     SecurityProtocol: SASL_PLAINTEXT
     SaslMechanism: SCRAM-SHA-256
-    SaslUsername: client
-    SaslPassword: client123456
+    SaslUsername: producer
+    SaslPassword: producer123456
     BootstrapServerList: 
-      - 45.197.7.51:9085
-    Topic: dev-p-device-info
+      - 23.251.100.146:9095
+    Topic: p-device-info
   scripts:
   install_script:
 

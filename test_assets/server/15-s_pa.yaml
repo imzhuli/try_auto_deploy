@@ -1,8 +1,7 @@
 server:
-  # address: ts_1
   address: 127.0.0.1
   user: ubuntu
-  home_dir: /home/ubuntu/test/
+  home_dir: /home/ubuntu/test.server/
 
 source:
   home_dir: ./test_assets/
@@ -12,16 +11,15 @@ source:
     - s_pa.xini
   config_values:
     TcpBindAddress: 0.0.0.0:11500
-    UdpBindIp: 127.0.0.1
-    ExportServerAddress: 127.0.0.1:11500
-
+    UdpBindAddress: 0.0.0.0
+    ExportUdpServerAddress: 175.178.22.69
     ServerListDownloadAddress: 127.0.0.1:10201
     
     LocalTagList:
       - ABC
       - DEF
 
-  scripts:
-  install_script:    
+  scripts: 
+  install_script: 
 
 

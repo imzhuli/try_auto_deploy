@@ -1,25 +1,5 @@
 
-#实际程序服务所监听的地址
 TcpBindAddress=${TcpBindAddress}
-# 服务器列表下载
+UdpBindAddress=${UdpBindAddress}
+ExportUdpServerAddress=${ExportUdpServerAddress}
 ServerListDownloadAddress=${ServerListDownloadAddress}
-
-#实际程序服务在新建时要绑定的地址, 多网卡时应当写网卡地址, 增加总的可用端口数. 与上面相同, 端口是绑定时程序生成, 这里配置不要带端口!!!
-UdpBindIp=${UdpBindIp}
-
-#对外声明的PA地址, 主要用于白名单功能时PA的识别
-ExportServerAddress=${ExportServerAddress}
-
-#实际程序在生成s5 udp代理时的返回用户的地址, 不要带端口!!!!
-ExportUdpBindAddress=175.178.22.69
-
-#本程序的本地TAG, 用逗号分开, 注意前后中间都不要带空格, 程序使用时, 为加快速度, 实际使用的是TAG的hash值, 
-#和个PA带的TAG最多有5个.
-LocalTagList=${LocalTagList}
-
-ConfigAuthServerAddress=127.0.0.1:17201
-ConfigDeviceSelectorAddress=127.0.0.1:17200
-ConfigAuditLoggerFilename=logs/pa.audit.log
-
-# 测试用
-RelayServerMapStr=0@127.0.0.1:17002
