@@ -16,7 +16,7 @@ source:
     SaslUsername: producer
     SaslPassword: producer123456
     BootstrapServerList: 
-      - 23.251.100.146:9095
+      - 23.251.100.146:9092
     Topic: p-device-info
   scripts:
   install_script:
