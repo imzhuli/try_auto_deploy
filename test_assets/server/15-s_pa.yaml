@@ -13,6 +13,7 @@ source:
     TcpBindAddress: 0.0.0.0:11500
     UdpBindAddress: 0.0.0.0
     ExportUdpServerAddress: 175.178.22.69
+    
     ServerListDownloadAddress: 127.0.0.1:10201
     
     LocalTagList:
