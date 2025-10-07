@@ -14,8 +14,6 @@ source:
   config_values:
     RegisterServiceBindAddress4: 0.0.0.0:10200
     DownloadServiceBindAddress4: 0.0.0.0:10201
-    RegisterServiceBindAddress6: "[::]:10200"
-    DownloadServiceBindAddress6: "[::]:10201"
   scripts:
   install_script: 
 

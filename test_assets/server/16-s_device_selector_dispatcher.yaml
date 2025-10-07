@@ -2,7 +2,7 @@ server:
   # address: ts_1
   address: 127.0.0.1
   user: ubuntu
-  home_dir: /home/ubuntu/test/
+  home_dir: /home/ubuntu/test.server/
 
 source:
   home_dir: ./test_assets/
@@ -13,6 +13,7 @@ source:
   config_values:
     BindAddressForClient: 0.0.0.0:11600
     ExportBindAddressForClient: 127.0.0.1:11600
+    
     BindAddressForServer: 0.0.0.0:11601
     ExportBindAddressForServer: 127.0.0.1:11601
 
