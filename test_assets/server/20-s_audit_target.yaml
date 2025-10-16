@@ -1,0 +1,31 @@
+server:
+  address: 127.0.0.1
+  user: ubuntu
+  
+  home_dir: /home/ubuntu/test.server/
+
+source:
+  home_dir: ./test_assets/
+  binaries:
+    - s_audit_target
+  config_files:
+    - s_audit_target.xini
+  config_values:
+    BindAddress4: 0.0.0.0:12000
+    ExportAddress4: 127.0.0.1:12000
+
+    ServerIdCenterAddress: 127.0.0.1:10000
+    ServerListRegisterAddress: 127.0.0.1:10200
+
+    SecurityProtocol: SASL_PLAINTEXT
+    SaslMechanism: SCRAM-SHA-256
+    SaslUsername: client
+    SaslPassword: client123456
+    BootstrapServerList: 
+      - 45.197.7.51:9085
+    Topic: dev-p-flow-stat
+
+  scripts:
+  install_script:    
+
+

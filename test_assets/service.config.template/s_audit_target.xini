@@ -1,0 +1,6 @@
+BindAddress4=${BindAddress4}
+ExportAddress4=${ExportAddress4}
+
+ServerIdCenterAddress=${ServerIdCenterAddress}
+ServerListRegisterAddress=${ServerListRegisterAddress}
+
