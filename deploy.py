@@ -135,16 +135,16 @@ def DeployService(config_file, override_file=None):
                     stop_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} stop {item}"
                     start_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} start {item} { " ".join(source_config_files)}"
                     check_cmd = f"cd {remote_home_full_path}; {remote_service_controller_full_path} status {item}"
-                    print("stopping privous service processes")
+                    print("stopping privous service processes, stop_cmd> " + stop_cmd)
                     _, o, e = runner.execute_command(stop_cmd)
                     print(o, end="")
                     print(e, end="")
-                    print("starting service processes")
+                    print("starting service processes, start_cmd> " + start_cmd)
                     time.sleep(1)
                     _, o, e = runner.execute_command(start_cmd)
                     print(o, end="")
                     print(e, end="")
-                    print("check service process status")
+                    print("check service process status, check_cmd>" + check_cmd)
                     time.sleep(1)
                     _, o, e = runner.execute_command(check_cmd)
                     print(o, end="")
