@@ -2,7 +2,7 @@ server:
   # address: ts_1
   address: 127.0.0.1
   user: ubuntu
-  home_dir: /home/ubuntu/test/
+  home_dir: /home/ubuntu/test.server/
 
 source:
   home_dir: ./test_assets/
@@ -11,10 +11,10 @@ source:
   config_files:
     - s_audit_account.xini
   config_values:
-    BindAddress: 0.0.0.0:11400
-    ExportServerAddress: 127.0.0.1:11400
+    BindAddress: 0.0.0.0:12100
+    ExportServerAddress: 127.0.0.1:12100
 
-    ServerIdCenterAddress: "[2402:4e00:101a:f300:0:9f95:4b15:c0db]:10000"
+    ServerIdCenterAddress: 127.0.0.1:10000
     ServerListRegisterAddress: 127.0.0.1:10200
     
     SecurityProtocol: SASL_PLAINTEXT
@@ -22,7 +22,7 @@ source:
     SaslUsername: client
     SaslPassword: client123456
     BootstrapServerList: 
-      - 45.197.7.51:9085
+      - 23.251.100.146:9092
     Topic: dev-p-flow-stat
 
 
