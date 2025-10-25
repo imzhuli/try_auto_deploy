@@ -6,16 +6,14 @@ server:
 source:
   home_dir: ./test_assets/
   binaries:
-    - s_pa
+    - s_pa_sub
   config_files:
     - s_pa.xini
   config_values:
-    TcpBindAddress: 0.0.0.0:11500    
+    TcpBindAddress: 0.0.0.0:11500
     ExportTcpBindAddress: 175.178.22.69:11500
-    ExportUdpServerAddress: 175.178.22.69
-    
     ServerListDownloadAddress: 127.0.0.1:10201
-    UdpMapping: 0.0.0.0-175.178.22.69
+    UdpMapping: 0.0.0.0->175.178.22.69,0.0.0.0->175.178.22.69
     
     LocalTagList:
       - ABC

@@ -1,6 +1,6 @@
 
 TcpBindAddress=${TcpBindAddress}
-ExportUdpServerAddress=${ExportUdpServerAddress}
+ExportTcpBindAddress=${ExportTcpBindAddress}
 ServerListDownloadAddress=${ServerListDownloadAddress}
 UdpMapping=${UdpMapping}
 
